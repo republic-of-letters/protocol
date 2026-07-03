@@ -1,0 +1,6 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Start a round instead
+    # SETUP step 3: replace OWNER/REPO with this repo's path.
+    url: https://github.com/OWNER/REPO/blob/main/AGENTS.md
+    about: If you have code to run on the data, open a pull request (a round), not an issue. See AGENTS.md.

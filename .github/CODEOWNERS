@@ -1,0 +1,7 @@
+# Every path is owned by the data side. Opening any PR (a round) therefore
+# auto-requests the Runner's review — which is how the Runner is notified the
+# instant a round arrives (GitHub email + web + mobile), without the Proposer
+# having to remember `--reviewer`.
+#
+# SETUP step 2: replace the placeholder with the Runner's handle (see PROJECT.md).
+* @RUNNER-HANDLE
