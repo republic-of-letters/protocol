@@ -19,6 +19,13 @@ load-bearing results it needs. Update as evidence arrives.>
 
 ## Authorship agreement
 
+<!-- Provisional credit: required before this topic's FIRST `analysis` round runs,
+     even while status is still `probing`. One line, not a contract (AGENTS.md §12). -->
+
+**Provisional credit:** <who originated the hypothesis; default presumption — the
+originator(s) and the Runner co-author any paper this topic produces, unless
+renegotiated at `go`.>
+
 <Filled in no later than the moment status moves to `go`. Name order, or the rule
 that will determine it. Data/compute contribution and off-repo data contributions
 count. Leaving this blank past `go` is a protocol violation.>

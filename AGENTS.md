@@ -1,6 +1,6 @@
 # AGENTS.md — collaboration protocol
 
-**Protocol v2.1** · upstream: [`republic-of-letters/protocol`](https://github.com/republic-of-letters/protocol).
+**Protocol v2.2** · upstream: [`republic-of-letters/protocol`](https://github.com/republic-of-letters/protocol).
 This copy travels with the project; fixes and lessons learned flow back upstream as
 PRs to the template, so every project inherits them.
 
@@ -20,6 +20,8 @@ protocol; that file is the project.
 > **Not set up yet** — no GitHub account, no clone, no `gh`? Do
 > [`ONBOARDING.md`](ONBOARDING.md) first; it gets you from zero to access, then sends
 > you back here.
+
+*中文版见 [`AGENTS.zh.md`](AGENTS.zh.md)（以本英文版为准）。*
 
 ---
 
@@ -60,7 +62,9 @@ Everything below is the detail behind those six steps.
 - **One repo = one trust circle.** Everything committed here is visible to every
   member. There are no hidden corners: if a piece of work needs a different set of
   eyes, it lives in a different repo with its own membership — never in a private
-  arrangement inside this one.
+  arrangement inside this one. The circle protects ideas as much as data: a hypothesis
+  disclosed inside it is on the record as its proposer's, symmetric to the data
+  boundary (§12).
 
 ## 2. Members and roles
 
@@ -270,6 +274,27 @@ gh pr review <PR-number> --comment --body "Ran it. Headline: <one sentence>. See
 Move the label from `round:running` to `round:answered`. Leave merging to the
 agreement in the PR thread (see §10).
 
+### 5.5 Runner load — the honest constraint
+
+A project's throughput is bounded by Runner human-hours. §5.2 requires a person to
+read every round before it touches data, and that read does not scale past what the
+Runner's human can actually read. The bottleneck is not compute; it is the Runner's
+attention. Plan around that, don't pretend it away.
+
+- **The topic gate weighs the Runner budget.** A GO is also a commitment of Runner
+  time (§13): deciding a topic is worth doing is deciding its rounds are worth the
+  Runner's reading.
+- **The Runner may batch runs and post ETAs.** Queue discipline (§5.0) stands; within
+  it the Runner can group runs and tell proposers when to expect them.
+- **The Runner may decline or defer a round on load grounds** — said in the thread. A
+  deferred round is not a dead round; it keeps its place in the queue.
+- **A project may name a deputy Runner** in `PROJECT.md` — must be data side (§2's
+  boundary stands: only the data side touches the dataset), held to the same §5.2
+  gate. The deputy shares the load; the boundary does not move.
+- **An agent may pre-review** — run the scan, draft the review — to save the human
+  time. But the human read remains the gate: pre-review compresses the reading, it
+  never replaces it.
+
 ## 6. The `ASK.md` contract
 
 YAML front-matter, then prose. Required fields are marked.
@@ -411,6 +436,19 @@ is one candidate paper (or one coherent research programme), and it owns its rou
   change is a decision — it goes in the decision log with the round(s) that justify it.
 - **Opening a topic is cheap, on purpose.** An issue describing the idea, or a small
   PR adding the `TOPIC.md` in `proposing`. Recording an idea costs one file.
+- **The archive is a priority claim.** Opening a topic or a round timestamps who
+  proposed which hypothesis — in the git history and the PR record. This is the idea
+  side's structural protection, symmetric to the data boundary that protects the data
+  side: what a member discloses inside the circle is on the record as theirs. Taking a
+  hypothesis disclosed here outside the circle, or using it without credit, is a
+  protocol violation of the same severity as moving raw data off the data server.
+- **Provisional credit before the first analysis round.** An `analysis` round can run
+  while a topic is still `probing` (§3) — a member reveals their hypothesis and code
+  before any terms exist. So before a topic's **first** `analysis` round runs,
+  `TOPIC.md` must carry a one-line **provisional credit line**: who originated the
+  hypothesis, plus the default that the originator(s) and the Runner co-author any
+  paper the topic produces, unless renegotiated at `go`. One line, not a contract —
+  the full agreement still lands no later than `go` (next).
 - **Authorship is agreed no later than `go`** — name order or the rule that decides
   it, written in `TOPIC.md`. Data/compute and off-repo licensed-data contributions
   count. Deferring this past `go` is a protocol violation, because it only gets
@@ -426,7 +464,7 @@ agent that routes around one is malfunctioning, no matter how good its intention
 
 | Gate | What passes through it | Who decides |
 | ---- | ---------------------- | ----------- |
-| **1. Topic gate** | GO / NO-GO, pivot, kill; authorship | The topic's human members, recorded in `TOPIC.md`'s decision log |
+| **1. Topic gate** | GO / NO-GO, pivot, kill; authorship (provisional credit before the first analysis round, full agreement by `go`) | The topic's human members, recorded in `TOPIC.md`'s decision log |
 | **2. Data gate**  | Any code executing against the real dataset | The Runner's human: safety gate §5.2 (scan **and** read), then a sandboxed run (non-root, `DATA_ROOT` read-only, no egress) |
 | **3. Merge gate** | A round becoming part of the permanent record | The humans on both sides content in the thread; CI green (§10); the mentor too, for a mentored member's rounds (§2) |
 
@@ -518,6 +556,7 @@ identifiers     branch round/R001-slug · folder exchange/R001-slug · PR "R001:
 labels          round:running / round:answered / blocked · topic:T<NN> · priority:high
 data names      see data/SCHEMA.md
 boundaries      no raw data · results only · read $DATA_ROOT · write ./result/ only
+ideas           archive = priority claim · provisional credit before a topic's first analysis round — §12
 human gates     topic (GO/kill/authorship) · data (safety gate) · merge — §13
-protocol        v2.1 · improvements → PR to republic-of-letters/protocol
+protocol        v2.2 · improvements → PR to republic-of-letters/protocol
 ```

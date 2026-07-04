@@ -1,6 +1,6 @@
 ---
 project:  <slug>                # short name, matches the repo name
-protocol: v2.1                  # pinned; upstream = republic-of-letters/protocol
+protocol: v2.2                  # pinned; upstream = republic-of-letters/protocol
 created:  2026-01-01
 visibility: display-only        # display-only | apply-to-join | open  (what the showcase may say)
 ---
@@ -23,6 +23,9 @@ single place where members, the Runner, and the data statement live.
 | `@<handle>`  | idea side | hypotheses, code                         | —      |
 
 - **Runner:** `@<handle>` — the only party that touches the dataset (AGENTS.md §2).
+- **Deputy Runner (optional):** `@<handle>` or `—` — a second data-side member who can
+  safety-review and run rounds when the Runner is loaded (AGENTS.md §5.5). Must be data
+  side; held to the same §5.2 gate. Mark them here (or in the table's `Side` column).
 - A member with a `Mentor` entry is a mentored member: the mentor's approval is part
   of the merge gate for that member's rounds (AGENTS.md §2, §13).
 - Membership changes are a decision — record them in the table *and* note who

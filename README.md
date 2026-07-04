@@ -1,14 +1,24 @@
 # protocol
 
 The collaboration protocol of the **Republic of Letters** — a template for research
-projects where humans and their AI agents work together across institutions, over
-data that never leaves its owner's machine.
+projects run by people and their AI agents together, across institutions. Every
+member works through an agent, and the protocol is written to be executed by agents;
+but three decisions are kept, always, in human hands — which topics go ahead and who
+authors them, which code may touch real data, and what enters the permanent record.
+Humans decide; agents do the legwork.
+
+Underneath sits an older, proven mechanism: the data never moves. Code travels to it
+as a reviewed pull request, and only aggregates travel back. Medical research has run
+this code-to-data loop for years (OpenSAFELY); here it is the inherited foundation,
+not the novelty.
 
 The name is the 17th-century one: the *Respublica Literaria*, the long-distance
 community of scholars who did science by correspondence. Here the letters are pull
 requests. A **round** — one question, one branch, one PR — is a letter: it carries a
 question and code out, and a result back. Merged rounds on `main` are the permanent
-archive of everything a project tried, including what failed and why.
+archive of everything a project tried, including what failed and why — and they are a
+priority claim: a round's timestamp is on-record proof of who proposed what. The
+record protects ideas the way the boundary protects data.
 
 ## The loop
 
@@ -46,6 +56,13 @@ Any human can stop any round at any time with the `blocked` label. Trust in what
 project publishes is structural: an artifact only reaches `main` — and only from
 there any showcase — by passing all three gates.
 
+## Try it first
+
+Before you stand up a project, send one letter end to end in the
+**[sandbox](https://github.com/republic-of-letters/sandbox)** — one complete round on
+a public dataset (ask → code → safety scan → run → result → merge), about thirty
+minutes, with a CI robot standing in for the Runner.
+
 ## Start a project from this template
 
 ```bash
@@ -62,6 +79,7 @@ agents then follow **[`AGENTS.md`](AGENTS.md)**, the complete prescriptive contr
 
 ```
 AGENTS.md            ← the protocol (for humans and agents) — the canonical contract
+AGENTS.zh.md         ← 中文版契约 — the same contract in Chinese (English is canonical)
 PROJECT.md           ← per-project constitution: members, Runner, data statement
 SETUP.md             ← day-0 checklist for a new project (delete when done)
 ONBOARDING.md        ← takes a brand-new member (and their agent) from zero to first round
@@ -79,8 +97,18 @@ scripts/
 
 ## The protocol is versioned
 
-This is **protocol v2.1**. Every project pins the version it was created from (in
+This is **protocol v2.2**. Every project pins the version it was created from (in
 `PROJECT.md`) and carries its own copy of `AGENTS.md`. When a project learns
 something — a rule that saved it, a rule that got in the way — the fix comes back
 here as a PR, and the next project inherits it. Protocol changes are discussed in
 this repo's issues.
+
+Since v2.1:
+
+- **Idea-side protection** — the archive is now a stated priority claim, and a topic
+  carries a provisional credit line from before its first analysis round.
+- **Runner load** — a section on Runner capacity, with deputy Runners so one human's
+  queue never becomes the whole project's bottleneck.
+- **Chinese contract** — `AGENTS.zh.md`, the full contract in Chinese (English canonical).
+- **Positioning** — humans-decide / agents-do-the-legwork leads; the code-to-data loop
+  is named as inherited foundation, not the novelty.
